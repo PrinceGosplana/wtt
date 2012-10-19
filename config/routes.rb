@@ -1,4 +1,8 @@
 WttRails::Application.routes.draw do
+  resources :homes
+
+  resources :comments
+
   resources :locations
 
   # The priority is based upon order of creation:
