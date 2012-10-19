@@ -1,9 +1,9 @@
 WttRails::Application.routes.draw do
   resources :homes
-
   resources :comments
-
-  resources :locations
+  resources :locations do
+    resources :comments
+  end 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
