@@ -19,14 +19,16 @@ defaults: &defaults
   pool: 5
   timeout: 5000
   host: localhost
-  <<: *<%= ENV['DB'] || "postgresql" %>
+  <<: *<%= ENV['DB'] || "mysql" %>
 
 development:
+  username: wtt
+  password: wtt
   <<: *defaults
-
+  
 test:
   <<: *defaults
 
 production:
   <<: *defaults
-  # TODO: Add erb-echo of credentials
+  
