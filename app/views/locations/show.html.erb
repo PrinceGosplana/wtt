@@ -9,8 +9,15 @@
 </dl>
 
 
-<h2>Add a comment:</h2>
-<%= form_for [@comment,@location.comments.build], :html => { :class => 'form-horizontal' } do |f| %>
+<h4>Comments on this location:</h4>
+<% @location.comments.each do |comment| %>
+<p>User: <%= comment.user %><br />
+Date/Time: <%= comment.created_at %><br />
+Comment: <%= comment.body %></p>
+<% end %>
+
+<h4>Add a comment:</h4>
+<%= form_for [@location, @location.comments.build], :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :user, :class => 'control-label' %>
     <div class="controls">
@@ -20,7 +27,7 @@
   <div class="control-group">
     <%= f.label :body, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :body, :class => 'text_field' %>
+      <%= f.text_area :body, :class => 'text_field' %>
     </div>
   </div>
 
@@ -28,6 +35,7 @@
     <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>
 <% end %>
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

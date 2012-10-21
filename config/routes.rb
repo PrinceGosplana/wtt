@@ -1,6 +1,5 @@
 WttRails::Application.routes.draw do
   resources :homes
-  resources :comments
   resources :locations do
     resources :comments
   end 
